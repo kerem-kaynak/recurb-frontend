@@ -12,22 +12,22 @@ function Navbar() {
   return (
     user ? 
     <nav className='flex flex-col justify-between items-center w-full h-full text-neutral-200 text-lg'>
-      <img src={import.meta.env.VITE_PUBLIC_PATH + 'recurb.svg'} alt="Logo" width={200} height={100} />
+      <img src='/recurb.svg' alt="Logo" width={200} height={100} />
       <div className='flex flex-col justify-start items-center gap-2 w-full pb-48'>
         <Link to="/" className="w-full px-6 py-3 transition-all ease-in duration-75 rounded-md hover:bg-neutral-700 flex flex-row gap-2 justify-start items-center">
-          <img src={import.meta.env.VITE_PUBLIC_PATH + 'dashboard.svg'} className="w-6 mr-2" />
+          <img src='/dashboard.svg' className="w-6 mr-2" />
           Dashboard
         </Link>
         <Link to="/subscriptions" className="w-full px-6 py-3 transition-all ease-in duration-75 rounded-md hover:bg-neutral-700 flex flex-row gap-2 justify-start items-center">
-          <img src={import.meta.env.VITE_PUBLIC_PATH + 'subscriptions.svg'} className="w-6 mr-2" />
+          <img src='/subscriptions.svg' className="w-6 mr-2" />
           Subscriptions
         </Link>
         <Link to="/payments" className="w-full px-6 py-3 transition-all ease-in duration-75 rounded-md hover:bg-neutral-700 flex flex-row gap-2 justify-start items-center">
-          <img src={import.meta.env.VITE_PUBLIC_PATH + 'payments.svg'} className="w-6 mr-2" />
+          <img src='/payments.svg' className="w-6 mr-2" />
           Payments
         </Link>
         <Link to="/reminders" className="w-full px-6 py-3 transition-all ease-in duration-75 rounded-md hover:bg-neutral-700 flex flex-row gap-2 justify-start items-center">
-          <img src={import.meta.env.VITE_PUBLIC_PATH + 'reminder.svg'} className="w-6 mr-2" />
+          <img src='/reminder.svg' className="w-6 mr-2" />
           Reminders
         </Link>
       </div>
