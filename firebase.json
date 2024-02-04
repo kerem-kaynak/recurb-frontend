@@ -11,6 +11,9 @@
         "source": "**",
         "destination": "dist/index.html"
       }
-    ]
+    ],
+    "environment": {
+      "VITE_API_HOST": "https://recurb-nxfbjm237a-ez.a.run.app"
+    }
   }
 }
