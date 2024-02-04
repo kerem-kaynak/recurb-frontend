@@ -2,6 +2,7 @@ import PageStructure from "../components/PageStructure"
 import { useEffect, useState } from "react";
 import SubscriptionCard from "../components/SubscriptionCard";
 import SubscriptionsTitleCard from "../components/SubscriptionsTitleCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 
 interface Subscription {
@@ -24,6 +25,7 @@ interface Subscription {
 
 const Subscriptions = () => {
   const [subscriptions, setSubscriptions] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,6 +36,7 @@ const Subscriptions = () => {
 
         const content = await response.json();
         setSubscriptions(content.data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -42,6 +45,7 @@ const Subscriptions = () => {
     fetchData();
   }, []);
   return (
+    loading ? <LoadingSpinner /> :
     <PageStructure title="Subscriptions">
       <Link to="/subscriptions/new">
         <button className="px-4 py-2 bg-gradient-to-br from-teal-300 to-lime-300 rounded-lg text-gray-900 hover:scale-105 transition-all ease-in font-bold mb-4">

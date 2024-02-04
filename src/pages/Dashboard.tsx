@@ -3,6 +3,7 @@ import GradientBorderCard from "../components/GradientBorderCard"
 import PageStructure from "../components/PageStructure"
 import PaymentCard from "../components/PaymentCard";
 import PaymentsTitleCard from "../components/PaymentsTitleCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface Payment {
   ID: number;
@@ -91,10 +92,10 @@ const Dashboard = () => {
   }, [payments]);
 
   return (
-    loading ? <div>Loading...</div> :
+    loading ? <LoadingSpinner /> :
     <PageStructure title="Dashboard">
       <div className="flex flex-col w-full gap-16">
-        <div className="w-full flex flex-row gap-16 justify-center">
+        <div className="w-full flex flex-col lg:flex-row gap-16 justify-center">
           <GradientBorderCard>
             <div className="px-8 py-4 flex flex-col gap-1 items-center justify-center">
               <span className="">

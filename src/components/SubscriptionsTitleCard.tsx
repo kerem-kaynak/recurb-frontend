@@ -10,10 +10,10 @@ const SubscriptionsTitleCard = () => {
     <div className="w-24 px-1 py-1 flex justify-center items-center">
       Category
     </div>
-    <div className="px-1 py-1 flex justify-center items-center w-32">
+    <div className="px-1 py-1 flex justify-center items-center w-0 invisible xl:w-32 xl:visible">
       Start Date
     </div>
-    <div className="px-1 py-1 flex justify-center items-center w-32">
+    <div className="px-1 py-1 flex justify-center items-center w-0 invisible xl:w-32 xl:visible">
       End Date
     </div>
     <div className="px-1 py-1 flex justify-center items-center w-32">

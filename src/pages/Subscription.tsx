@@ -3,8 +3,9 @@ import PageStructure from '../components/PageStructure'
 import GradientBorderCard from '../components/GradientBorderCard'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import PaymentCard from '../components/PaymentCard'
+import PaymentCardInline from '../components/PaymentCardInline'
 import ReminderCard from '../components/ReminderCard'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 interface Payment {
   ID: number;
@@ -71,6 +72,8 @@ const Subscription = () => {
   const [endDate, setEndDate] = useState("")
   const [reminders, setReminders] = useState([])
   const [payments, setPayments] = useState([])
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -90,6 +93,7 @@ const Subscription = () => {
         setEndDate(content.data.EndDate);
         setReminders(content.data.Reminders);
         setPayments(content.data.Payments);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -121,10 +125,11 @@ const Subscription = () => {
   }
 
   return (
+    loading ? <LoadingSpinner /> :
     <PageStructure title={name}>
       <GradientBorderCard>
         <div className='flex flex-col px-8 py-8 gap-4'>
-          <div className='flex flex-row gap-8'>
+          <div className='flex flex-row gap-8 justify-center items-center xl:justify-start xl:items-start'>
           <Link to={website}>
             <button className="px-4 py-2 bg-gradient-to-br from-teal-300 to-lime-300 rounded-lg text-gray-900 hover:scale-105 transition-all ease-in font-bold mb-4">
               → Go to Website
@@ -136,7 +141,7 @@ const Subscription = () => {
             </button>
           
           </div>
-          <div className='flex flex-row w-full gap-16'>
+          <div className='flex flex-col justify-center items-center text-center xl:text-start xl:justify-start xl:items-start xl:flex-row w-full gap-16'>
             <div className='flex flex-col w-1/4 gap-16'>
               <div className='flex flex-col text-xl font-bold'>
                 <span className='bg-gradient-to-r from-teal-300 to-lime-300 inline-block text-transparent bg-clip-text font-bold text-3xl mb-2'>
@@ -175,7 +180,7 @@ const Subscription = () => {
                   Payments:
                 </span>
                 <div className='w-full h-96 overflow-auto scrollbar-hide'>
-                {payments.map((payment: Payment) => (<PaymentCard payment={payment} key={payment.ID} />))}
+                {payments.map((payment: Payment) => (<PaymentCardInline payment={payment} key={payment.ID} />))}
                 </div>
               </div>
               

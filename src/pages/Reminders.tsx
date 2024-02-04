@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RemindersTitleCard from "../components/RemindersTitleCard"
 import PageStructure from "../components/PageStructure";
 import ReminderCard from "../components/ReminderCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { Link } from "react-router-dom";
 
 interface Reminder {
@@ -33,6 +34,8 @@ interface Reminder {
 
 const Reminders = () => {
   const [reminders, setReminders] = useState([])
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,6 +46,7 @@ const Reminders = () => {
 
         const content = await response.json();
         setReminders(content.data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -52,6 +56,7 @@ const Reminders = () => {
   }, []);
 
   return (
+    loading ? <LoadingSpinner /> :
     <PageStructure title="Reminders">
       <Link to="/reminders/new">
         <button className="px-4 py-2 bg-gradient-to-br from-teal-300 to-lime-300 rounded-lg text-gray-900 hover:scale-105 transition-all ease-in font-bold mb-4">

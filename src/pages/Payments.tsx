@@ -3,6 +3,7 @@ import GradientBorderCard from "../components/GradientBorderCard"
 import PaymentsTitleCard from "../components/PaymentsTitleCard"
 import PaymentCard from "../components/PaymentCard";
 import PageStructure from "../components/PageStructure";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface Payment {
   ID: number;
@@ -33,6 +34,7 @@ interface Payment {
 
 const Payments = () => {
   const [payments, setPayments] = useState([])
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,6 +51,7 @@ const Payments = () => {
           return aDate.getTime() - bDate.getTime();
         });
         setPayments(paymentsData);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -58,6 +61,7 @@ const Payments = () => {
   }, []);
 
   return (
+    loading ? <LoadingSpinner /> :
     <PageStructure title="Payments">
           <div className="w-full flex flex-col gap-1 items-center justify-center">
     <GradientBorderCard>

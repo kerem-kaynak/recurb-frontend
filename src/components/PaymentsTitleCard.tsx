@@ -7,7 +7,7 @@ const PaymentsTitleCard = () => {
       <div className="px-1 py-1 flex justify-center items-center w-96">
         Subscription
       </div>
-      <div className="px-1 py-1 flex justify-center items-center w-24">
+      <div className="px-1 py-1 flex justify-center items-center invisible w-0 xl:visible xl:w-24">
         Category
       </div>
       <div className="px-1 py-1 flex justify-center items-center w-32">

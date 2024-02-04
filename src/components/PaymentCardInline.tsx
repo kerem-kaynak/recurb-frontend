@@ -35,12 +35,6 @@ const PaymentCard : React.FC<PaymentCardProps> = ({ payment }) => {
       <div className="px-1 py-1 flex justify-center items-center w-24">
         {paymentDate.toLocaleDateString()}
       </div>
-      <div className="px-1 py-1 flex justify-center items-center w-96">
-        {payment.Subscription.Name}
-      </div>
-      <div className="px-1 py-1 flex justify-center items-center w-0 invisible xl:visible xl:w-24">
-        {payment.Subscription.Category}
-      </div>
       <div className="px-1 py-1 flex justify-center items-center w-32">
         {payment.Amount} €
       </div>

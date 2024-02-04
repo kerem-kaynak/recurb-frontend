@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import PageStructure from '../components/PageStructure'
 import GradientBorderCard from '../components/GradientBorderCard'
+import LoadingSpinner from '../components/LoadingSpinner'
 import { Link } from 'react-router-dom'
 
 const Reminder = () => {
@@ -9,6 +10,7 @@ const Reminder = () => {
   const [message, setMessage] = useState("")
   const [subscriptionId, setSubscriptionId] = useState(0)
   const [subscriptionName, setSubscriptionName] = useState("")
+  const [loading, setLoading] = useState(true)
   const reminderId = useParams().id
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +25,7 @@ const Reminder = () => {
         setDate(content.data.Date);
         setSubscriptionName(content.data.Subscription.Name);
         setSubscriptionId(content.data.Subscription.ID);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -51,6 +54,7 @@ const Reminder = () => {
   };
 
   return (
+    loading ? <LoadingSpinner /> :
     <PageStructure title='Reminder'>
       <GradientBorderCard>
         <div className="flex flex-col justify-center items-center px-4 py-8 w-full">

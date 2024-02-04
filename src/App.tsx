@@ -15,13 +15,22 @@ import Reminder from './pages/Reminder';
 import CreateReminderWithId from './pages/CreateReminderWithId';
 
 function App() {
+  let isMobile = false
+  if (window.innerWidth < 1024) {
+    isMobile = true
+  }
+
   return (
+    isMobile ? <div className='h-screen w-full flex flex-col justify-center items-center'>
+      <img src='/recurb.svg' alt="Logo" width={200} height={100} />
+      <p className='py-4 px-8 text-center text-xl text-white font-bold'>Recurb is not available on mobile... yet.</p>
+    </div> :
     <UserProvider>
       <>
         <BrowserRouter>
         <div className='w-full h-full flex flex-row text-neutral-200'>
-          <div className='w-1/6'>
-            <div className='w-full h-full px-4 py-16 transition-all ease-in duration-75 bg-neutral-800 group-hover:bg-opacity-0'>
+          <div className='w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6'>
+            <div className='w-full h-full px-4 py-16 bg-neutral-800 group-hover:bg-opacity-0'>
             <Navbar />
             </div>
           </div>
