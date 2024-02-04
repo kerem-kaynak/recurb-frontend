@@ -13,7 +13,7 @@
       }
     ],
     "environment": {
-      "VITE_API_HOST": "https://recurb-nxfbjm237a-ez.a.run.app"
+      "VITE_API_HOST": "https://api.recurb.app"
     }
   }
 }
